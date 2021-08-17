@@ -1,0 +1,5 @@
+get_filename_component(MODULE_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
+file(GLOB_RECURSE MODULE_SRC *.cpp *.cc *.cxx *.c)
+add_executable(${MODULE_NAME} ${MODULE_SRC})
+target_include_directories(${MODULE_NAME} PRIVATE . ./include)
+target_link_libraries(${MODULE_NAME} ${COMMON_LIB})
