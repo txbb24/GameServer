@@ -1,7 +1,7 @@
 /*
  * @Author: guanwenjie
  * @Date: 2021-08-11 15:44:29
- * @LastEditTime: 2021-08-11 17:49:46
+ * @LastEditTime: 2021-08-17 15:13:51
  * @LastEditors: guanwenjie
  * @Description: server模板
  */
@@ -11,7 +11,7 @@
 #include "timeutils.h"
 #include "processutils.h"
 
-int32_t CServerTemplate::Init()
+int32_t CServerTemplate::Init(const std::string &strServerType, const std::string &strServerName, const std::string &strConfPath, bool bDeamon)
 {
     if (StartDeamon() != 0)
     {
@@ -25,7 +25,7 @@ int32_t CServerTemplate::MainLoop(int32_t &dwSignal)
 {
     while(true)
     {
-        if (dwSignal & SERVER_SIGNAL_EXIT != 0)
+        if ((dwSignal & SERVER_SIGNAL_EXIT) != 0)
         {
             if (m_eStatus < E_SERVER_STATUS_EXIT)
             {
